@@ -14,70 +14,109 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#fbfaf7;--card:#fff;--text:#1d2633;--muted:#5f6b7a;--line:#e4e0d8;--accent:#e8431d;--accent-text:#fff;--sea:#1b6fa0;--deep:#0c3a63;--ok:#17897f;--ok-bg:#e2f3f1;--bad:#d63a17;--bad-bg:#fde9e3;--sand:#efe8dc;--sky1:#dcefff;--sky2:#8cc3e3;--serif:"PT Serif",Georgia,"Times New Roman",serif}
-@media (prefers-color-scheme:dark){:root{--paper:#0b1724;--card:#112233;--text:#e9eef4;--muted:#9fb0c2;--line:#22374c;--accent:#ff6a43;--sea:#2a86bf;--deep:#071c31;--ok:#4cc7b9;--ok-bg:#12332f;--bad:#ff7a5c;--bad-bg:#3a1c14;--sand:#14212e;--sky1:#0f2a44;--sky2:#1b4a70}}
+:root{--paper:#fff;--text:#1c2838;--muted:#5b6878;--line:#e2e6ea;--signal:#e8431d;--on-signal:#fff;--sky:#cfe7f6;--sea:#1f6fa3;--deep:#0b3a64;--ok:#138a7e;--bad:#d4381a;--sand:#ece4d6;--rope:#b59b72;--serif:"PT Serif",Georgia,"Times New Roman",serif}
+@media (prefers-color-scheme:dark){:root{--paper:#0a1828;--text:#e8eef5;--muted:#9db0c4;--line:#203650;--signal:#ff6a43;--sky:#163a5c;--sea:#1d5f8f;--deep:#061525;--ok:#4cc7b9;--bad:#ff7a5c;--sand:#13222f;--rope:#7d6a4c}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--text);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-.hero{position:relative;color:#fff;background:linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 34%,var(--sea) 52%,var(--deep) 100%);padding:16px 16px 64px;overflow:hidden}
-.hero .gulls{position:absolute;top:8px;right:4%;width:min(180px,30vw);opacity:.9}
-.hero .edge{position:absolute;left:0;bottom:-1px;width:100%;height:60px;display:block}
-.hero-in{position:relative;max-width:760px;margin:0 auto;padding-top:min(6vw,40px)}
-.eyebrow{font-variant:small-caps;letter-spacing:.18em;font-size:15px;margin:0 0 8px;opacity:.9}
-h1{font-family:var(--serif);font-weight:700;font-size:clamp(30px,7vw,48px);line-height:1.1;margin:0 0 12px;text-shadow:0 2px 12px rgba(0,30,60,.35)}
-.updated{margin:0;opacity:.92}
-main{max-width:760px;margin:0 auto;padding:4px 16px 40px}
-h2{font-family:var(--serif);font-weight:400;color:var(--accent);font-size:clamp(24px,5vw,30px);line-height:1.2;margin:36px 0 14px}
-.summary{font-family:var(--serif);font-size:19px;margin:12px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
-.svc{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:10px 12px;box-shadow:0 1px 0 var(--line)}
-.svc h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:18px;margin:0 0 4px}
-.pill{display:inline-block;font-size:13px;font-weight:600;padding:2px 10px;border-radius:999px}
-.pill.ok{color:var(--ok);background:var(--ok-bg)}.pill.bad{color:var(--bad);background:var(--bad-bg)}
-.dots{display:flex;flex-wrap:wrap;gap:3px;margin-top:8px}
+body{margin:0;background:var(--paper);color:var(--text);font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--sea)}
+@media (prefers-color-scheme:dark){a{color:#7cc0ee}}
+
+/* море — главный образ страницы */
+.hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(180deg,var(--sky) 0%,#8ec4e4 30%,var(--sea) 58%,var(--deep) 100%);padding:14px 16px 58px}
+.hero-in{position:relative;z-index:1;max-width:640px;margin:0 auto}
+.tagline{font-family:var(--serif);font-style:italic;font-size:16px;margin:0 0 2px;color:#0b3a64}
+@media (prefers-color-scheme:dark){.tagline{color:#cfe7f6}}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(28px,7.6vw,46px);line-height:1.08;margin:0 0 10px;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(5,30,55,.45)}
+.updated{margin:0;font-size:15px;line-height:1.4;text-shadow:0 1px 6px rgba(5,30,55,.5)}
+.gulls{position:absolute;top:6px;right:3%;width:min(150px,30vw)}
+.gulls path{fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round}
+.waves{position:absolute;left:0;bottom:-1px;width:100%;height:56px;display:block}
+.waves .w{transform-box:fill-box}
+.splash{fill:var(--paper)}
+
+main{max-width:640px;margin:0 auto;padding:0 16px 32px}
+h2{font-family:var(--serif);font-weight:400;color:var(--signal);font-size:clamp(23px,5.6vw,28px);line-height:1.2;margin:0 0 10px}
+.summary{font-family:var(--serif);font-size:18px;line-height:1.45;margin:10px 0 12px}
+
+/* состояние сервисов */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.svc{border:1px solid var(--line);border-radius:10px;padding:9px 12px 10px;background:var(--paper)}
+.svc h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:18px;line-height:1.25;margin:0}
+.star{color:inherit;text-decoration:none}
+.pill{display:block;font-size:14px;font-weight:600;margin:1px 0 0}
+.pill.ok{color:var(--ok)}.pill.bad{color:var(--bad)}
+.dots{display:flex;flex-wrap:wrap;gap:3px;margin-top:7px}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--bad)}.dot.ok{background:var(--ok)}
-.proxy{position:relative;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:4px;padding:22px 20px 18px;margin-top:40px}
-.proxy::before{content:"";position:absolute;top:-28px;right:16px;width:76px;height:76px;transform:rotate(-12deg);filter:drop-shadow(0 4px 6px rgba(0,0,0,.18));background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='36' fill='none' stroke='%23e8431d' stroke-width='22'/%3E%3Ccircle cx='50' cy='50' r='36' fill='none' stroke='%23fff' stroke-width='22' stroke-dasharray='19 37.5' stroke-dashoffset='9'/%3E%3Ccircle cx='50' cy='50' r='47' fill='none' stroke='%23d9cbb0' stroke-width='2' stroke-dasharray='6 5'/%3E%3C/svg%3E") center/contain no-repeat}
-.proxy h2{margin:0 92px 6px 0}
-.btn{display:block;text-align:center;background:var(--accent);color:var(--accent-text);text-decoration:none;font-weight:700;font-size:18px;padding:14px;border-radius:4px;margin:16px 0 10px;box-shadow:0 3px 0 rgba(0,0,0,.15)}
-.btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(0,0,0,.15)}
-.btn:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
+
+/* спасательный круг — блок прокси */
+.proxy{position:relative;margin-top:22px;padding:16px 16px 14px;border-radius:14px;background:linear-gradient(180deg,rgba(31,111,163,.07),rgba(31,111,163,0));border:1px solid var(--line)}
+.proxy::before{content:"";position:absolute;top:-22px;right:10px;width:70px;height:70px;transform:rotate(-12deg);filter:drop-shadow(0 4px 5px rgba(0,0,0,.2));background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='47' fill='none' stroke='%23c7b38c' stroke-width='2.5' stroke-dasharray='7 5'/%3E%3Ccircle cx='50' cy='50' r='34' fill='none' stroke='%23e8431d' stroke-width='22'/%3E%3Ccircle cx='50' cy='50' r='34' fill='none' stroke='%23fff' stroke-width='22' stroke-dasharray='17.8 35.6' stroke-dashoffset='9'/%3E%3C/svg%3E") center/contain no-repeat}
+.proxy h2{margin:0 78px 0 0}
+.btn{display:block;text-align:center;background:var(--signal);color:var(--on-signal);text-decoration:none;font-weight:700;font-size:18px;line-height:1.3;padding:14px 12px;border-radius:10px;margin:12px 0 10px;box-shadow:0 3px 0 #a92c10}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 #a92c10}
+.btn:focus-visible,button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
 .small{color:var(--muted);font-size:15px;margin:0}
-details{border-top:1px solid var(--line);padding:12px 0}
+details{border-top:1px solid var(--line);padding:11px 0}
 details:last-of-type{border-bottom:1px solid var(--line)}
-summary{cursor:pointer;font-family:var(--serif);font-style:italic;font-size:20px;list-style:none}
+summary{cursor:pointer;font-family:var(--serif);font-style:italic;font-size:19px;list-style:none}
 summary::-webkit-details-marker{display:none}
-summary::before{content:"→";font-style:normal;color:var(--accent);margin-right:10px}
-details[open] summary::before{content:"↓"}
-.proxy details summary{font-size:17px}
+summary::before{content:"→";display:inline-block;font-style:normal;color:var(--signal);margin-right:10px;transition:transform .2s cubic-bezier(.65,0,.35,1)}
+details[open] summary::before{transform:rotate(90deg)}
+.proxy details{margin-top:12px;padding-bottom:2px;border-bottom:0}
+.proxy summary{font-size:16px}
 .field{display:flex;gap:8px;align-items:center;margin:8px 0}
 .field span{color:var(--muted);font-size:14px;min-width:56px}
-.field code{flex:1;min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:8px;font-size:14px;word-break:break-all}
-button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:4px;padding:8px 10px;cursor:pointer}
-footer{position:relative;background:var(--sand);color:var(--muted);font-size:14px;padding:44px 16px 28px;margin-top:40px}
-footer .rope{position:absolute;top:-14px;left:0;width:100%;height:30px;display:block}
-footer p{max-width:760px;margin:0 auto 8px}
-.star{color:inherit;text-decoration:none}
+.field code{flex:1;min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px;font-size:14px;word-break:break-all}
+button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--paper);color:var(--text);border-radius:8px;padding:8px 10px;cursor:pointer}
+.faq{margin-top:34px}
+
+footer{position:relative;background:var(--sand);color:var(--muted);font-size:14px;padding:40px 16px 26px;margin-top:36px}
+footer .rope{position:absolute;top:-13px;left:0;width:100%;height:28px;display:block}
+footer p{max-width:640px;margin:0 auto 8px}
+
+/* движение: один главный момент (круг падает на блок прокси), остальное — тихий фон */
+@media (prefers-reduced-motion:no-preference){
+  .waves .w1{animation:drift 16s linear infinite}
+  .waves .w2{animation:drift 11s linear infinite reverse}
+  .gulls path{animation:bob 6s cubic-bezier(.65,0,.35,1) infinite alternate}
+  .gulls path:nth-child(2){animation-duration:7.5s;animation-delay:-2s}
+  .gulls path:nth-child(3){animation-duration:5.2s;animation-delay:-4s}
+  .proxy::before{animation:toss .75s cubic-bezier(.34,1.56,.64,1) .45s both}
+  .dot{animation:pop .26s cubic-bezier(.16,1,.3,1) both;animation-delay:calc(var(--i,0) * 22ms + 150ms)}
+  details[open]>:not(summary){animation:open .24s cubic-bezier(.16,1,.3,1)}
+}
+@keyframes drift{to{transform:translateX(-50%)}}
+@keyframes bob{to{transform:translateY(-5px)}}
+@keyframes toss{from{opacity:0;transform:translate(26px,-60px) rotate(-120deg)}to{opacity:1;transform:rotate(-12deg)}}
+@keyframes pop{from{opacity:0;transform:scale(.2)}}
+@keyframes open{from{opacity:0;transform:translateY(-4px)}}
 </style>
 </head>
 <body>
 <header class="hero">
-<svg class="gulls" viewBox="0 0 220 90" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 40q10-12 20 0q10-12 20 0"/><path d="M95 18q7-9 14 0q7-9 14 0"/><path d="M150 52q8-10 16 0q8-10 16 0"/><path d="M70 70q5-6 10 0q5-6 10 0"/></svg>
+<svg class="gulls" viewBox="0 0 150 70" aria-hidden="true"><path d="M10 34q9-11 18 0q9-11 18 0"/><path d="M70 14q6-8 12 0q6-8 12 0"/><path d="M108 44q7-9 14 0q7-9 14 0"/></svg>
 <div class="hero-in">
-<p class="eyebrow">проверка доступности</p>
+<p class="tagline">проверка доступности</p>
 <h1>Что не работает в России сегодня</h1>
-<p class="updated">Обновлено 24 октября, 15:00 по Москве · следующая проверка в 21:00</p>
+<p class="updated">Обновлено 24 октября, 15:00 по Москве.<br>Следующая проверка в 21:00.</p>
 </div>
-<svg class="edge" viewBox="0 0 1200 110" preserveAspectRatio="none" aria-hidden="true"><path fill="var(--paper)" d="M0 62c60-20 110 18 170 4s90-40 160-30 120 46 200 34 110-44 190-40 120 38 200 30 90-30 150-26 60 14 130 6V110H0z"/><g fill="var(--paper)"><circle cx="148" cy="44" r="6"/><circle cx="172" cy="34" r="3"/><circle cx="508" cy="58" r="5"/><circle cx="536" cy="44" r="2.5"/><circle cx="890" cy="40" r="7"/><circle cx="915" cy="30" r="3"/><circle cx="1090" cy="46" r="4"/></g></svg>
+<svg class="waves" viewBox="0 0 1200 56" preserveAspectRatio="none" aria-hidden="true">
+<path class="w w2" fill="#ffffff" fill-opacity=".18" d="M0 26c100-18 200 18 300 0s200-18 300 0 200 18 300 0 200-18 300 0 200 18 300 0 200-18 300 0 200 18 300 0 200-18 300 0V56H0z"/>
+<path class="w w1 splash" d="M0 36c75-16 150 14 225 2s150-22 225-6 150 16 225 2 150-20 225-4 150 14 225 4s50 0 75 2c75-16 150 14 225 2s150-22 225-6 150 16 225 2 150-20 225-4 150 14 225 4s50 0 75 2V56H0z"/>
+<g class="splash"><circle cx="160" cy="24" r="4.5"/><circle cx="180" cy="16" r="2.2"/><circle cx="540" cy="22" r="3.5"/><circle cx="880" cy="18" r="5"/><circle cx="902" cy="10" r="2.2"/><circle cx="1110" cy="24" r="3"/></g>
+</svg>
 </header>
 <main>
-<p class="summary">Сейчас не открываются: YouTube, Instagram<a class="star" href="#meta" aria-label="сноска о Meta">*</a>, Telegram, ChatGPT (OpenAI).</p>
-<div class="grid"><section class="svc"><h3>YouTube</h3><span class="pill bad">Не открывается</span><div class="dots" aria-label="Последние проверки"><span class="dot" title="23.10 23:30 — не открывается"></span><span class="dot" title="24.10 04:25 — не открывается"></span><span class="dot" title="24.10 09:00 — не открывается"></span><span class="dot" title="24.10 15:00 — не открывается"></span></div></section><section class="svc"><h3>Instagram<a class="star" href="#meta" aria-label="сноска о Meta">*</a></h3><span class="pill bad">Не открывается</span><div class="dots" aria-label="Последние проверки"><span class="dot" title="23.10 23:30 — не открывается"></span><span class="dot" title="24.10 04:25 — не открывается"></span><span class="dot" title="24.10 09:00 — не открывается"></span><span class="dot" title="24.10 15:00 — не открывается"></span></div></section><section class="svc"><h3>Telegram</h3><span class="pill bad">Не открывается</span><div class="dots" aria-label="Последние проверки"><span class="dot" title="23.10 23:30 — не открывается"></span><span class="dot" title="24.10 04:25 — не открывается"></span><span class="dot" title="24.10 09:00 — не открывается"></span><span class="dot" title="24.10 15:00 — не открывается"></span></div></section><section class="svc"><h3>ChatGPT (OpenAI)</h3><span class="pill bad">Не открывается</span><div class="dots" aria-label="Последние проверки"><span class="dot" title="23.10 23:30 — не открывается"></span><span class="dot" title="24.10 04:25 — не открывается"></span><span class="dot" title="24.10 09:00 — не открывается"></span><span class="dot" title="24.10 15:00 — не открывается"></span></div></section></div>
-<section class="proxy"><h2>Telegram тормозит? Бесплатный прокси</h2><p class="small">Включается в самом Telegram одним нажатием, без приложений и регистрации.</p><a class="btn" href="tg://proxy?server=45.133.19.70&amp;port=993&amp;secret=eee800e55a00f81347947b9f7b7ed7ef00646c2e676f6f676c652e636f6d">Подключить прокси</a><p class="small">Если у вас включён VPN — прокси не нужен, выключите его.</p><details><summary>Кнопка не сработала? Добавить вручную</summary><p class="small">Telegram → Настройки → Данные и память → Прокси → Добавить прокси → MTProto.</p><div class="field"><span>Сервер</span><code>45.133.19.70</code><button data-copy="45.133.19.70">Копировать</button></div><div class="field"><span>Порт</span><code>993</code><button data-copy="993">Копировать</button></div><div class="field"><span>Ключ</span><code>eee800e55a00f81347947b9f7b7ed7ef00646c2e676f6f676c652e636f6d</code><button data-copy="eee800e55a00f81347947b9f7b7ed7ef00646c2e676f6f676c652e636f6d">Копировать</button></div></details></section>
+<p class="summary">Сейчас не открываются: YouTube, Instagram<a class="star" href="#meta" aria-label="сноска о Meta">*</a>, Telegram, ChatGPT.</p>
+<div class="grid"><section class="svc"><h3>YouTube</h3><span class="pill bad">Не открывается</span><div class="dots" aria-label="Последние проверки"><span class="dot" style="--i:0" title="23.10 23:30 — не открывается"></span><span class="dot" style="--i:1" title="24.10 04:25 — не открывается"></span><span class="dot" style="--i:2" title="24.10 09:00 — не открывается"></span><span class="dot" style="--i:3" title="24.10 15:00 — не открывается"></span></div></section><section class="svc"><h3>Instagram<a class="star" href="#meta" aria-label="сноска о Meta">*</a></h3><span class="pill bad">Не открывается</span><div class="dots" aria-label="Последние проверки"><span class="dot" style="--i:0" title="23.10 23:30 — не открывается"></span><span class="dot" style="--i:1" title="24.10 04:25 — не открывается"></span><span class="dot" style="--i:2" title="24.10 09:00 — не открывается"></span><span class="dot" style="--i:3" title="24.10 15:00 — не открывается"></span></div></section><section class="svc"><h3>Telegram</h3><span class="pill bad">Не открывается</span><div class="dots" aria-label="Последние проверки"><span class="dot" style="--i:0" title="23.10 23:30 — не открывается"></span><span class="dot" style="--i:1" title="24.10 04:25 — не открывается"></span><span class="dot" style="--i:2" title="24.10 09:00 — не открывается"></span><span class="dot" style="--i:3" title="24.10 15:00 — не открывается"></span></div></section><section class="svc"><h3>ChatGPT</h3><span class="pill bad">Не открывается</span><div class="dots" aria-label="Последние проверки"><span class="dot" style="--i:0" title="23.10 23:30 — не открывается"></span><span class="dot" style="--i:1" title="24.10 04:25 — не открывается"></span><span class="dot" style="--i:2" title="24.10 09:00 — не открывается"></span><span class="dot" style="--i:3" title="24.10 15:00 — не открывается"></span></div></section></div>
+<section class="proxy"><h2>Telegram тормозит?</h2><a class="btn" href="tg://proxy?server=45.133.19.70&amp;port=993&amp;secret=eee800e55a00f81347947b9f7b7ed7ef00646c2e676f6f676c652e636f6d">Подключить бесплатный прокси</a><p class="small">Включается в самом Telegram одним нажатием, без приложений и регистрации. Если у вас включён VPN — прокси не нужен.</p><details><summary>Кнопка не сработала? Добавить вручную</summary><p class="small">Telegram → Настройки → Данные и память → Прокси → Добавить прокси → MTProto.</p><div class="field"><span>Сервер</span><code>45.133.19.70</code><button data-copy="45.133.19.70">Копировать</button></div><div class="field"><span>Порт</span><code>993</code><button data-copy="993">Копировать</button></div><div class="field"><span>Ключ</span><code>eee800e55a00f81347947b9f7b7ed7ef00646c2e676f6f676c652e636f6d</code><button data-copy="eee800e55a00f81347947b9f7b7ed7ef00646c2e676f6f676c652e636f6d">Копировать</button></div></details></section>
+<section class="faq">
 <h2>Вопросы</h2>
 <details><summary>Почему не открывается YouTube?</summary><p>С 2024 года YouTube в России замедляют, а с февраля 2026 года у большинства провайдеров он не открывается совсем. Перезагрузка телефона или роутера не поможет — дело не в вашем устройстве.</p></details><details><summary>Почему тормозит Telegram и что делает прокси?</summary><p>С февраля 2026 года Telegram в России ограничивают: сообщения уходят с задержкой, не грузятся фото и видео. Прокси — промежуточный сервер, через который Telegram ходит без этих ограничений. Включается в настройках самого Telegram, ничего устанавливать не нужно.</p></details><details><summary>Это безопасно?</summary><p>Прокси передаёт только трафик Telegram. Переписка зашифрована самим Telegram — владелец прокси её не видит. Выключить прокси можно в любой момент: Настройки → Данные и память → Прокси.</p></details><details><summary>Как вы проверяете?</summary><p>Телефон на домашнем интернете (Дом.ру, Санкт-Петербург) три раза в день — в 9:00, 15:00 и 21:00 — открывает YouTube, Instagram*, Telegram и ChatGPT без VPN. Точки в карточках — результаты последних проверок, справа самые свежие.</p></details>
+</section>
 </main>
 <footer>
-<svg class="rope" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 15H560M640 15H1200" stroke="#b9a27c" stroke-width="5" stroke-dasharray="7 3"/><path d="M560 15c10-14 30-14 40 0s30 14 40 0M560 15c10 14 30 14 40 0s30-14 40 0" fill="none" stroke="#a88d63" stroke-width="5"/></svg>
+<svg class="rope" viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0 14H560M640 14H1200" stroke="var(--rope)" stroke-width="5" stroke-dasharray="8 3"/><path d="M560 14c10-13 30-13 40 0s30 13 40 0M560 14c10 13 30 13 40 0s30-13 40 0" fill="none" stroke="var(--rope)" stroke-width="5"/></svg>
 <p id="meta">* Instagram принадлежит компании Meta, которая признана экстремистской организацией и запрещена в России.</p>
 <p>Проверка автоматическая. Результаты для одного провайдера в Санкт-Петербурге — у других провайдеров и в других городах может отличаться.</p>
 </footer>
