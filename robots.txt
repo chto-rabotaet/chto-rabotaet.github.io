@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://chto-rabotaet.github.io/sitemap.xml
